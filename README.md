@@ -39,8 +39,7 @@ This project is built as a **MERN-stack** monorepo (in a single repository with 
         * **Primary Key:** `question` (String). This allows the AI agent to perform a fast, direct lookup (a `GetItem` or `Query`) to find an answer, which is the primary access pattern.
 
 * **AI Agent (LiveKit):**
-    * **Why:** The assignment required researching the **LiveKit SDK**.
-    * **Implementation:** The `server/agent.js` script installs and uses the `livekit-server-sdk` to generate a valid JWT `AccessToken`. This demonstrates the ability to use the SDK to get a token for an agent to join a call "room." The rest of the call (audio, etc.) is simulated via console logs, as permitted by the assignment.
+    * **Implementation:** The `server/AI-agent.js` script installs and uses the `livekit-server-sdk` to generate a valid JWT `AccessToken`. This demonstrates the ability to use the SDK to get a token for an agent to join a call "room." The rest of the call (audio, etc.) is simulated via console logs, as permitted by the assignment.
 
 ---
 
@@ -61,8 +60,8 @@ This terminal runs the main Express API.
 
 ```bash
 # 1. Clone the repository
-git clone [Link to your GitHub repo]
-cd ai-supervisor-loop/server
+git clone https://github.com/Ramakrish21/Human-in-the-Loop-AI-Supervisor.git
+cd Human-in-the-Loop-AI-Supervisor/server
 
 # 2. Install dependencies
 npm install
@@ -89,3 +88,26 @@ STATUS_INDEX_NAME=StatusAndDateIndex
 npm run dev
 
 # Server will be running at http://localhost:5001
+
+### 2. Frontend UI Setup (Terminal 2)
+
+This terminal runs the React Supervisor Dashboard.
+
+# In a new terminal, navigate to the client folder
+cd Human-in-the-Loop-AI-Supervisor/client
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the React app
+npm run dev
+
+# App will be running at http://localhost:5173
+
+### 3. AI Agent Setup (Terminal 3)
+
+# In a new terminal, navigate to the server folder
+cd Human-in-the-Loop-AI-Supervisor/server
+
+# 4. Run the agent script
+node AI-agent.js
