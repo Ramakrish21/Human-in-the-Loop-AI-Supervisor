@@ -10,9 +10,11 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.922.0",
     "@aws-sdk/lib-dynamodb": "^3.922.0",
+    "axios": "^1.13.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "livekit-server-sdk": "^2.14.0",
     "mongoose": "^8.19.2",
     "uuid": "^13.0.0"
   },
