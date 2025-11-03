@@ -5,64 +5,78 @@ function Dashboard({ pendingRequests, knowledgeBase, onResolve }) {
   const [selectedRequest, setSelectedRequest] = useState(null);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-      {/* Pending Requests Section */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-4 text-yellow-400">
-          Pending Help Requests ({pendingRequests.length})
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-7xl mx-auto">
+      {/* --- Pending Requests Section --- */}
+      <section className="bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-700">
+        <h2 className="text-2xl font-bold mb-4 text-yellow-400 flex items-center">
+          Pending Help Requests
+          <span className="ml-2 text-sm text-gray-400">
+            ({pendingRequests.length})
+          </span>
         </h2>
 
-        <div className="space-y-4">
-          {pendingRequests.length === 0 ? (
-            <p className="text-gray-400">No pending requests. Great job!</p>
-          ) : (
-            pendingRequests.map((request) => (
+        {pendingRequests.length === 0 ? (
+          <p className="text-gray-400 text-center italic py-10">
+            🎉 No pending requests. Great job!
+          </p>
+        ) : (
+          <div className="space-y-5 overflow-y-auto max-h-[65vh] pr-2">
+            {pendingRequests.map((request) => (
               <div
                 key={request.requestId}
-                className="bg-gray-800 p-4 rounded-lg shadow-lg"
+                className="bg-gray-900 p-5 rounded-xl border border-gray-700 hover:border-yellow-400 transition-all"
               >
-                <p className="text-lg font-medium">{request.customerQuestion}</p>
-                <p className="text-sm text-gray-400 mt-1">
-                  Received: {new Date(request.createdAt).toLocaleString()}
+                <p className="text-lg font-semibold text-white">
+                  {request.customerQuestion}
+                </p>
+                <p className="text-sm text-gray-500 mt-1">
+                  📅 {new Date(request.createdAt).toLocaleString()}
                 </p>
                 <button
                   onClick={() => setSelectedRequest(request)}
-                  className="mt-4 bg-yellow-500 text-black font-bold py-2 px-4 rounded hover:bg-yellow-400 transition-colors"
+                  className="mt-4 bg-yellow-500 text-black font-bold py-2 px-5 rounded-lg hover:bg-yellow-400 active:scale-95 transition-transform"
                 >
                   Resolve
                 </button>
               </div>
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
-      {/* Knowledge Base Section */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-4 text-green-400">
-          Learned Answers ({knowledgeBase.length})
+      {/* --- Knowledge Base Section --- */}
+      <section className="bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-700">
+        <h2 className="text-2xl font-bold mb-4 text-green-400 flex items-center">
+          Learned Answers
+          <span className="ml-2 text-sm text-gray-400">
+            ({knowledgeBase.length})
+          </span>
         </h2>
 
-        <div className="space-y-4">
-          {knowledgeBase.length === 0 ? (
-            <p className="text-gray-400">No learned answers yet.</p>
-          ) : (
-            knowledgeBase.map((item) => (
+        {knowledgeBase.length === 0 ? (
+          <p className="text-gray-400 text-center italic py-10">
+            🤖 No learned answers yet.
+          </p>
+        ) : (
+          <div className="space-y-5 overflow-y-auto max-h-[65vh] pr-2">
+            {knowledgeBase.map((item) => (
               <div
                 key={item.question}
-                className="bg-gray-800 p-4 rounded-lg shadow"
+                className="bg-gray-900 p-5 rounded-xl border border-gray-700 hover:border-green-400 transition-all"
               >
                 <p className="text-sm text-gray-400 font-medium">
                   Q: {item.question}
                 </p>
-                <p className="text-lg text-green-300">A: {item.answer}</p>
+                <p className="text-lg text-green-300 mt-1 font-semibold">
+                  A: {item.answer}
+                </p>
               </div>
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
-      {/* Resolve Modal */}
+      {/* --- Resolve Modal --- */}
       {selectedRequest && (
         <ResolveModal
           request={selectedRequest}

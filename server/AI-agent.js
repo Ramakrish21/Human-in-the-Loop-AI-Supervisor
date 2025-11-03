@@ -98,6 +98,8 @@ async function runDemo() {
 //   await handleSimulatedCall("What are your salon's weekend hours?");
 //   await handleSimulatedCall("How much is a haircut?");
 //   await handleSimulatedCall("What is your's name?");
+  await handleSimulatedCall("Can I book an appointment online?");
+  await handleSimulatedCall("are you available today?");
      
 }
 
