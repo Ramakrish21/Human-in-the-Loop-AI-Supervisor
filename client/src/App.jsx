@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import apiClient from "../src/utils/api";
+import apiClient from "../src/utils/api"; // Updated import path
 import Dashboard from "./components/Dashboard";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
       setPendingRequests(requestsRes.data);
       setKnowledgeBase(knowledgeRes.data);
     } catch (err) {
-      setError("⚠️ Failed to fetch data. Is the server running?");
+      setError("⚠️ Failed to fetch data. Is the server running?"); // Updated error message
       console.error(err);
     } finally {
       setIsLoading(false);
@@ -33,6 +33,7 @@ function App() {
   }, []);
 
   return (
+    // New polished styling
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
       <header className="py-8 border-b border-gray-700 shadow-sm">
         <h1 className="text-4xl font-extrabold text-center tracking-wide text-yellow-400">

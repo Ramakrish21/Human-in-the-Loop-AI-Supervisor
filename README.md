@@ -2,10 +2,6 @@
 
 This project is a complete, end-to-end "human-in-the-loop" system built for the Frontdesk Engineering Test. It features a simulated AI agent that can escalate unknown questions to a human supervisor. The supervisor can then provide an answer through a web-based dashboard, which automatically updates the AI's knowledge base.
 
-### 🎥 Live Demo (Placeholder)
-
-*(You can replace this section with a link to your screen recording)*
-
 ---
 
 ## 🚀 Core Features

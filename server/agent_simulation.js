@@ -3,7 +3,7 @@ const axios = require("axios");
 const { AccessToken } = require("livekit-server-sdk");
 
 // ==========================================================
-// 1️⃣ API CLIENT — Connects the AI Agent to its own backend
+// 1 API CLIENT — Connects the AI Agent to its own backend
 // ==========================================================
 const apiClient = axios.create({
   baseURL: process.env.API_BASE_URL || "http://localhost:5001/api",
@@ -11,14 +11,14 @@ const apiClient = axios.create({
 });
 
 // ==========================================================
-// 2️⃣ LIVEKIT CONFIGURATION — From your LiveKit Cloud project
+// 2 LIVEKIT CONFIGURATION — From your LiveKit Cloud project
 // ==========================================================
 const LIVEKIT_API_KEY = process.env.LIVEKIT_API_KEY;
 const LIVEKIT_API_SECRET = process.env.LIVEKIT_API_SECRET;
-const LIVEKIT_HOST = process.env.LIVEKIT_HOST;
+const LIVEKIT_HOST_URL = process.env.LIVEKIT_HOST_URL;
 
-if (!LIVEKIT_API_KEY || !LIVEKIT_API_SECRET || !LIVEKIT_HOST) {
-  console.error("❌ Missing LiveKit credentials in .env file");
+if (!LIVEKIT_API_KEY || !LIVEKIT_API_SECRET || !LIVEKIT_HOST_URL) {
+  console.error(" Missing LiveKit credentials in .env file");
   process.exit(1);
 }
 
@@ -43,7 +43,7 @@ async function generateAgentToken(callId, agentId) {
 }
 
 // ==========================================================
-// 3️⃣ AI AGENT LOGIC — Simulated "Brain"
+// 3 AI AGENT LOGIC — Simulated "Brain"
 // ==========================================================
 async function handleSimulatedCall(customerQuestion) {
   console.log("\n---------------------------------------------");
@@ -95,12 +95,7 @@ async function handleSimulatedCall(customerQuestion) {
 // 4 RUN SIMULATION — Two test scenarios
 // ==========================================================
 async function runDemo() {
-//   await handleSimulatedCall("What are your salon's weekend hours?");
-//   await handleSimulatedCall("How much is a haircut?");
-//   await handleSimulatedCall("What is your's name?");
-  await handleSimulatedCall("Can I book an appointment online?");
-  await handleSimulatedCall("are you available today?");
-     
+  await handleSimulatedCall("What's your name?");
 }
 
 runDemo();
